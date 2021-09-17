@@ -4,10 +4,10 @@ using System.Runtime.CompilerServices;
 
 namespace WindowsDesktop.Interop
 {
-	[ComInterfaceWrapper("IVirtualDesktopManagerInternal", 20231)]
-	internal sealed class VirtualDesktopManagerInternal20231 : VirtualDesktopManagerInternal
+	[ComInterfaceWrapper("IVirtualDesktopManagerInternal", 22449)]
+	internal sealed class VirtualDesktopManagerInternal22449 : VirtualDesktopManagerInternal
 	{
-		public VirtualDesktopManagerInternal20231(ComInterfaceAssembly assembly)
+		public VirtualDesktopManagerInternal22449(ComInterfaceAssembly assembly)
 			: base(assembly)
 		{
 		}
@@ -52,7 +52,7 @@ namespace WindowsDesktop.Interop
 
 		public override void MoveDesktop(VirtualDesktop desktop, int index)
 		{
-			throw new PlatformNotSupportedException("This Windows 10 version is not supported.");
+			this.Invoke(Args(desktop.ComObject, IntPtr.Zero, index));
 		}
 
 		public override void RemoveDesktop(VirtualDesktop pRemove, VirtualDesktop pFallbackDesktop)
@@ -75,7 +75,7 @@ namespace WindowsDesktop.Interop
 
 		public override void SetDesktopWallpaper(VirtualDesktop desktop, string path)
 		{
-			throw new PlatformNotSupportedException("This Windows 10 version is not supported.");
+			this.Invoke(Args(desktop.ComObject, path));
 		}
 	}
 }
